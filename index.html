@@ -1,68 +1,259 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Internal domain</title>
+  <title>DollarDeploy AI - The Future of Deployment</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="3; url=https://dollardeploy.com/?utm_source=github" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f9fafb;
-      padding: 20px;
+      overflow-x: hidden;
     }
 
-    .error-container {
-      text-align: center;
-      max-width: 90%;
-      width: 400px;
-      background-color: white;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
-    .error-title {
-      color: #1f2937;
-      font-size: 2rem;
-      margin: 0 0 1rem 0;
+    .floating-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .error-message {
-      color: #4b5563;
-      font-size: 1.125rem;
-      line-height: 1.5;
-      margin: 0 0 1.5rem 0;
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0) 70%);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
     }
 
-    .reload-button {
-      background-color: #2563eb;
-      color: white;
-      border: none;
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #60a5fa, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+      }
+
+      to {
+        text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+      }
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s;
+      font-weight: 500;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
 
-    .reload-button:hover {
-      background-color: #1d4ed8;
+    .button-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      color: #60a5fa;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="error-container">
-    <h1 class="error-title">Internal domain</h1>
-    <p class="error-message">This domain used internally to provide temporary DNS names for the hosts in Dollar Deploy. Go to dollardeploy.com to manage your hosts.</p>
-    <a class="reload-button" href="https://dollardeploy.com/?utm_source=github">Redirect</a>
+  <div class="floating-particles" id="particles"></div>
+
+  <div class="container">
+    <div class="hero">
+      <h1>The Future of Deployment is AI-Powered</h1>
+      <p>Experience the next generation of application deployment with DollarDeploy's upcoming AI capabilities.
+        Automate, optimize, and revolutionize your deployment workflow.</p>
+
+      <div class="cta-buttons">
+        <a href="https://discord.gg/BHbfmaAGb7" class="button button-primary" target="_blank">
+          Join Our Discord
+        </a>
+        <a href="https://dollardeploy.com/team" class="button button-secondary" target="_blank">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>AI-Powered Optimization</h3>
+        <p>Our AI will analyze your application and infrastructure needs to generate optimal deployment strategies,
+          saving you time and resources.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Smart Monitoring</h3>
+        <p>Advanced AI algorithms will automatically identify runtime issues and propose fixes, making SRE work more
+          efficient than ever.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Cost Optimization</h3>
+        <p>Leverage AI to minimize deployment costs while maximizing performance across multiple providers and hardware
+          types.</p>
+      </div>
+    </div>
   </div>
+
+  <script>
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = 20;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // Random size between 100px and 300px
+        const size = Math.random() * 200 + 100;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random starting position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+
+        // Random animation duration between 10s and 20s
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+
+        container.appendChild(particle);
+      }
+    }
+
+    // Create particles when the page loads
+    window.addEventListener('load', createParticles);
+  </script>
 </body>
 
 </html>
